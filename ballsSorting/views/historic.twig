@@ -2,45 +2,43 @@
 
 {% block body %}
 
-	<div class="row mt-2">
-		<div class="col-12">
-			<h1 class="display-1">Historic</h1>
-		</div>
-	</div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <h1 class="display-1">Historic</h1>
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="col-12 mb-2">
-			<div class="card shadow">
-				<div class="card-body">
-					<h4 class="card-title">Recorded sessions</h4>
-					<select name="session" id="session">
-						{% for session in sessions %}
-							<option value="{{session.id}}">{{session.name | date }}</option>
-						{% endfor %}
-					</select>
-					<table id="table" class="table mt-2">
-						<thead>
-							<tr>
-								<th>Timestamp</th>
-								<th>Value</th>
-							</tr>
-						</thead>
-						<tbody id="mesures" ></tbody>
-					</table>
-				</div>
-			</div>
-
-
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-12 mb-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title">Recorded sessions</h4>
+                    <select name="session" id="session">
+                        {% for session in sessions %}
+                            <option value="{{session.id}}">{{session.name | date }}</option>
+                        {% endfor %}
+                    </select>
+                    <table id="table" class="table mt-2">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mesures" ></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row d-print-none">
         <div class="col-12">
-        <div class="card shadow">
-            <div class="card-body">
-                <canvas id="graph" ></canvas>
+            <div class="card shadow">
+                <div class="card-body">
+                    <canvas id="graph" ></canvas>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -81,20 +79,22 @@ $(() => {
                     const idColorCell = document.createElement("td");
 
                     // Condition pour afficher le texte correspondant à idColor
-                    if (measure.idColor === 1) {
-                        idColorCell.innerHTML = "Pink";
-                        pinkCount++;
-                    } else if (measure.idColor === 2) {
-                        idColorCell.innerHTML = "Yellow";
-                        yellowCount++;
-                    } else {
-                        idColorCell.innerHTML = measure.idColor; // Afficher idColor tel quel pour les autres valeurs
-                        otherCount++;
-                    }
+                    if (measure.idColor !== 5 && measure.idColor !== 0) { // Ajout de la condition ici
+                        if (measure.idColor === 1) {
+                            idColorCell.innerHTML = "Pink";
+                            pinkCount++;
+                        } else if (measure.idColor === 2) {
+                            idColorCell.innerHTML = "Yellow";
+                            yellowCount++;
+                        } /*else {
+                            idColorCell.innerHTML = measure.idColor; // Afficher idColor tel quel pour les autres valeurs
+                            otherCount++;
+                        }*/
 
-                    row.appendChild(timestamp);
-                    row.appendChild(idColorCell);
-                    $("#mesures").append(row);
+                        row.appendChild(timestamp);
+                        row.appendChild(idColorCell);
+                        $("#mesures").append(row);
+                    }
                 });
                 // Gestion du graphique
                 const data = {

@@ -83,23 +83,10 @@
   <script type="text/javascript">
   
     $(() => {
-      // Récupérer les valeurs des compteurs depuis le stockage local, ou initialiser à 0 si elles n'existent pas
-      let pinkCount = parseInt(localStorage.getItem('pinkCount')) || 0;
-      let yellowCount = parseInt(localStorage.getItem('yellowCount')) || 0;
-      let otherCount = parseInt(localStorage.getItem('otherCount')) || 0;
-    
-      // Mettre à jour l'interface utilisateur avec les valeurs récupérées
-      $('#pink-value').text(pinkCount);
-      $('#yellow-value').text(yellowCount);
-      $('#other-value').text(otherCount);
-    
-      // Définir la fonction pour mettre à jour et stocker les valeurs des compteurs dans le stockage local
-      function updateCountersAndLocalStorage() {
-        // Stocker les compteurs dans le stockage local
-        localStorage.setItem('pinkCount', pinkCount);
-        localStorage.setItem('yellowCount', yellowCount);
-        localStorage.setItem('otherCount', otherCount);
-      }
+
+      let pinkCount = 0;
+      let yellowCount = 0;
+      let otherCount = 0;
     
       setInterval(() => {
         $.ajax({
@@ -109,29 +96,8 @@
           success: function (response) {
             console.log(response);
             $('#timestamp').text(response.lastTimestamp);
-
-
-            // Ajouter la logique de réinitialisation lorsque le bouton Reset est cliqué
-            $("#reset").click(function (e) {
-              e.preventDefault();
-              $.post("/api/reset",
-                function (data, textStatus, jqXHR) {
-                  // Réinitialiser les compteurs et l'interface utilisateur
-                  pinkCount = 0;
-                  yellowCount = 0;
-                  otherCount = 0;
-                  $('#pink-value').text(pinkCount);
-                  $('#yellow-value').text(yellowCount);
-                  $('#other-value').text(otherCount);
-                  
-                  // Mise à jour et stockage des compteurs dans le stockage local
-                  updateCountersAndLocalStorage();
-                },
-                "json"
-              );
-            });
     
-            // Réinitialisation des compteurs si lastAcquisition est égal à 0
+            // Réinitialisation du compteur si lastAcquisition est égal à 0
             if (response.lastAcquisition === 0) {
               pinkCount = 0;
               yellowCount = 0;
@@ -139,11 +105,10 @@
               $('#pink-value').text(pinkCount);
               $('#yellow-value').text(yellowCount);
               $('#other-value').text(otherCount);
-              updateCountersAndLocalStorage();
             }
     
-            // Mise à jour des compteurs en fonction de la valeur de lastAcquisition
-            else if (response.lastAcquisition === 1) {
+            // Condition pour afficher pink ou yellow en fonction de la valeur de lastAcquisition
+            if (response.lastAcquisition === 1) {
               pinkCount++;
               if (pinkCount <= 4) {
                 $('#pink-value').text(pinkCount);
@@ -161,14 +126,11 @@
                 $('#other-value').text(otherCount);
               }
               $('#measure').text("yellow");
-            } else {
+            } /*else {
               otherCount++;
               $('#other-value').text(otherCount);
               $('#measure').text(response.lastAcquisition);
-            }
-    
-            // Mise à jour et stockage des compteurs dans le stockage local
-            updateCountersAndLocalStorage();
+            }*/
     
             $('#state').text((response.idle ? "IDLE" : "recording..."));
             if (response.idle) {
@@ -202,13 +164,25 @@
         );
       });
     
-    });
+      // Ajouter la logique de réinitialisation lorsque le bouton Reset est cliqué
+      $("#reset").click(function (e) {
+        e.preventDefault();
+        $.post("/api/reset",
+          function (data, textStatus, jqXHR) {
+            // Réinitialiser les compteurs et l'interface utilisateur
+            pinkCount = 0;
+            yellowCount = 0;
+            otherCount = 0;
+            $('#pink-value').text(pinkCount);
+            $('#yellow-value').text(yellowCount);
+            $('#other-value').text(otherCount);
+          },
+          "json"
+        );
+      });
     
+    });
 
-
-
-  
-  
   </script>
 
 {% endblock %}
