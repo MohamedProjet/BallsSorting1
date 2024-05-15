@@ -1,0 +1,93 @@
+{% extends 'layout.twig' %}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>Color Sorting Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/pulse/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #84888d; 
+      }
+      .rounded-container {
+        border: 2px solid #040405;
+        border-radius: 10px; 
+        padding: 20px; 
+      }
+      .container-border {
+        border: 2px solid #040405;
+        border-radius: 10px; 
+        padding: 20px;
+        margin: 20px; /* Ajout de la marge pour une meilleure apparence */
+      }
+    </style>
+  </head>
+  <body>
+    {% block body %}
+
+    <div class="container mt-2">
+        <div class="card mb-4">
+            <h1 class="card-header text-center">Color Sorting</h1>
+            <div class="card-body">
+                <div class="col-1"></div>
+                <div class="col-10 text-center">
+                    <div class="rounded-container mt-3" style="background-color: white;">
+                    <div class="row">
+                        <div class="col-lg-4"> <!-- Column for the logo -->
+                        <img src="images/helha.png" alt="HELHA Logo" style="max-width: 200px;">
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-5 "> <!-- Column for the text content -->
+                            
+                            <p class="lead">Welcome to our project website</p>
+                            <p class="lead">This project involves sorting balls according to their color. These balls are either pink or yellow and will have to pass through two gutters to reach a container of their respective colors.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="container-fluid mt-2 container-border"> <!-- Ajout de la classe container-border -->
+        <div class="row">
+          
+        </div>
+      </div>
+      <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div id="carouselExampleControls" class="carousel slide mx-auto" data-ride="carousel" style="width: 400px " style="height: 300px ">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="images/image1.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="images/image2.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="images/image3.jpg" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>           
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf

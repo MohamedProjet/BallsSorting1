@@ -1,0 +1,70 @@
+{% extends 'layout.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="card mb-4">
+            <h1 class="card-header text-center">About the project</h1>
+            <div class="card-body">
+                <h4 class="card-title text-center">List of primary components we used</h4>
+                <div class="list-group col-lg-6 mx-auto">
+                    <div class="list-group-item d-flex justify-content-between align-items-center gap-3">
+                        <div>
+                            <h6 class="mb-0">Raspberry Pi 4B</h6>
+                            <p class="mb-0 text-muted">Used for database, web server, api.</p>
+                        </div>
+                        <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary h-100 stretched-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center gap-3">
+                        <div>
+                            <h6 class="mb-0">Arduino Mega</h6>
+                            <p class="mb-0 text-muted">
+                                Used to read to sensors' informations and send it to the Rasberry.
+                            </p>
+                        </div>
+                        <a href="https://docs.arduino.cc/hardware/mega-2560" target="_blank" rel="noopener noreferrer" class="btn btn-secondary h-100 stretched-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center gap-3">
+                        <div>
+                            <h6 class="mb-0">camera Huskylens</h6>
+                            <p class="mb-0 text-muted">
+                                camera sensor used to measure the color of the balls.
+                            </p>
+                        </div>
+                        <a href="https://wiki.dfrobot.com/HUSKYLENS_V1.0_SKU_SEN0305_SEN0336" target="_blank" rel="noopener noreferrer" class="btn btn-secondary h-100 stretched-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <h1 class="card-header text-center">Contact links</h1>
+            <div class="card-body">
+                <div class="list-group col-lg-6 mx-auto">
+                    <div class="list-group-item">
+                        <h6 class="mb-0">Anas Balhor</h6>
+                        <p class="mb-0 text-muted">
+                            Email :
+                            <i>
+                                <a href="mailto:" class="link-info">la218663@student.helha.be</a>
+                            </i>
+                        </p>
+                    </div>
+                    <div class="list-group-item">
+                        <h6 class="mb-0">Mohamed-Rida El-Gourari</h6>
+                        <p class="mb-0 text-muted">
+                            Email :
+                            <i>
+                                <a href="mailto:" class="link-info">la227590@student.helha.be</a>
+                            </i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
